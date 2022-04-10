@@ -32,7 +32,7 @@
     <p>git status</p>
     <p>git restore index.html</p>
 
-    <h3>cancelar modificaciones ---metodo anterior por comtatibilidad</h3>
+    <h3>cancelar modificaciones ---metodo anterior por compatibilidad</h3>
     <p>git checkout --index.html</p>
 
     <h3>Descartar el ultimo Commit realizado</h3>
@@ -43,6 +43,22 @@
     <p>git reset 6048f11</p>
     <p>git checkout --index.html</p>
 
+    <h3>Excluir archivos que no queremos que se le haga versionamiento</h3>
+    <p>Hay archivo que no queremos que se se les haga copia como por ejemplo los ejecutables</p>
+    <p>variables de entorno que son diferente en cada máquina, como credenciales de las bases de datos,</p>
+    <p>que no queremos que suban en la copia por seguridad</p>
+    <h2>creacion del archivo .gitignore</h2>
+    <p>En este archivo colocamos los nombres y directorios que queremos excluir</p>
+    <p>por ejemplo el archivo .env, donde tenemos las variables de conexion a Mysql</p>
 
+    <h3>Comando Status de la forma corta</h3>
+    <p>git status -s</p>
+    <p>Nos muestra los nombres de los archivos comprometidos en el versionamiento</p>
+
+    <h3>ver modificaiones realizadas a un arhivo con el Comando diff</h3>
+    <p>git diff</p>
+    <p>nos muestra de manera visual las lineas borradas y las linea insertada en un arhivo modificado</p>
+    <p>ahora si los cambios ya fueron agregrados al area Stage hay que utilizar</p>
+    <p>git diff --staged</p>
 </body>
 </html>
