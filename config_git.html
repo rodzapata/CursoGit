@@ -17,6 +17,10 @@
     <p>Configuracion del Enter en Linuex y Mac</p>
     <p>git config --global core.autocrlf input</p>
 
+    <h1>Inicializar el proyecto con Init</h1>
+    <p>Esto solo se hace cuando se va a crear el proyecto desde Cero</p>
+    <p>git init</p>
+
     <h2>Comandos de transacciones</h2>
     <p>Agregamos un archivo al area de Stage (Escenario)</p>
     <p>git add index.html</p>
@@ -78,8 +82,27 @@
     <p>git checkout master</p>
     <p>git merge beta</p>
 
-    <h3>Subir el codigo loca a la nuve</h3>
+    <h3>Subir el codigo local a la nuve</h3>
     <p>Hay que tener una cuenta en Gihub</p>
+    <h2>para subir el trabajo local a la nueve hay que utilizar el comando Remote</h2>
+    <p>git remote add origin https://github.com/rodzapata/CursoGit.git</p>
+    <h2>Cargamos los datos con el comando Push</h2>
+    <p>git push -u origin master</p>
+    <p>pedira la cuenta de usuario y el token</p>
+    <p>el parametro -u es para que cree una rama nueva en este caso master en el servidor remoto</p>
+    <p>en el caso que la rama exista se debe omitir</p>
+
+    <h3>clonar el repositorio para trabajar y actualizara los datos</h3>
+    <p>para clonar el respositorio del remoto a nuestra maquina local se usa el comando Clone</p>
+    <p>git clone https://github.com/rodzapata/CursoGit.git</p>
+    <p>se recomienda que una vez descargados los cambios, se ejecute el comando Pull</p>
+    <p>git pull</p>
+    <p>realizamos los cambios a trabajar hacemos los Commit y finalamente actualizamos al remoto usando Push</p>
+    <p>git push origin master</p>
+
+    <h3>Como saber si nuestro repsitorio local esta conectado a uno remoto</h3>
+    <p>git remote -v</p>
+
     
     <h3>Prueba de una nueva leyenda</h3>
 
