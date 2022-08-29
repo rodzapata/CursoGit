@@ -4,24 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuracion inicial de Git</title>
+    <title>Curso de Git</title>
+    <link rel="stylesheet" href="estilo-git.css">
 </head>
 <body>
-    <h1>Configuracion inicial de Git</h1>
+    <h1>Curso de Git</h1>
+    <h2>Indice de contenido</h2>
+    <ui>
+      <li><a href="#config-inicial">Configuracion Inicial</a></li>
+      <li><a href="#transacciones">Comando transacciones </a></li>
+      <li><a href="#cancelar-modificaciones">cancelar modificaciones</a></li>
+      <li><a href="#cancelar-modificaciones-anterior">Cancelar modificaciones metodo anterior</a></li>
+      <li><a href="#cancelar-ultimo-commit">cancelar el ultimo Commit realizado</a></li>
+      <li><a href="#excluir-archivos">Excluir archivos que no queremos que se le haga versionamiento</a></li>
+      <li><a href="#status">Status</a></li>
+      <li><a href="#diff">ver modificaiones realizadas a un arhivo con el Comando diff</a></li>
+      <li><a href="#ramas">Manejo de Ramas </a></li>
+      <li><a href="#subir-local-nuve">Subir de local a la nuve</a></li>
+      <li><a href="#token-git">Token Git</a></li>
+      <li><a href="#clonar-repositorio">Clonar Repositorio</a></li>
+      <li><a href="#comprobar-remoto">Comprobar conexion local con remoto</a></li>
+      <li><a href="#modificar-descripcion-commit">Modificar la descripcion de un Commit</a></li>
+
+
+
+      
+    </ui>
+  
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="config-inicial">Configuracion inicial de Git</h2>
     <p>git config --global user.name "Rodney Zapata"</p>
     <p>git config --global user.email "rodneyzapatapalacio@gmail.com"</p>
     <p>git config --global core.editor "code --wait"</p>
     <p>git config --global -e</p>
     <p>Configuracion del Enter en Windows</p>
     <p>git config --global core.autocrlf true</p>
-    <p>Configuracion del Enter en Linuex y Mac</p>
+    <p>Configuracion del Enter en Linux y Mac</p>
     <p>git config --global core.autocrlf input</p>
 
-    <h1>Inicializar el proyecto con Init</h1>
+    <h2>Inicializar el proyecto con Init</h2>
     <p>Esto solo se hace cuando se va a crear el proyecto desde Cero</p>
     <p>git init</p>
 
-    <h2>Comandos de transacciones</h2>
+  
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="transacciones">Comandos de transacciones</h2>
     <p>Agregamos un archivo al area de Stage (Escenario)</p>
     <p>git add index.html</p>
     <p>Verificamos el estado del repositorio Status</p>
@@ -29,17 +58,23 @@
     <p>Confirmamos los cambios realizado con Commit</p>
     <p>git commit -m "Plantilla inicial" </p>
 
-    <h3>cancelar modificaciones ---nuevo metodo</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="cancelar-modificaciones">cancelar modificaciones ---nuevo metodo</h2>
     <p>git restore index.html</p>
     <h2>Descartar una modificacion que aun no haya utilizado Git add sin Commit</h2>
     <p>git restore --staged index.html</p>
     <p>git status</p>
     <p>git restore index.html</p>
 
-    <h3>cancelar modificaciones ---metodo anterior por compatibilidad</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="cancelar-modificaciones-anterior">cancelar modificaciones ---metodo anterior por compatibilidad</h2>
     <p>git checkout --index.html</p>
 
-    <h3>Descartar el ultimo Commit realizado</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="cancelar-ultimo-commit">Cancelar el ultimo Commit realizado</h2>
     <p>git reset HEAD index.html</p>
     <h3>Log para ver los commit realizados para eliminar el commit</h3>
     <p>git log --oneline</p>
@@ -50,8 +85,9 @@
     <h2>Diferencia entres Reset, Revert y Rebase</h2>
     <a href="https://geekflare.com/es/git-reset-vs-revert-vs-rebase/"> Este articulo es tomado de la pagina:</a>
     
-
-    <h3>Excluir archivos que no queremos que se le haga versionamiento</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="excluir-archivos">Excluir archivos que no queremos que se le haga versionamiento</h2>
     <p>Hay archivo que no queremos que se se les haga copia como por ejemplo los ejecutables</p>
     <p>variables de entorno que son diferente en cada máquina, como credenciales de las bases de datos,</p>
     <p>que no queremos que suban en la copia por seguridad</p>
@@ -59,17 +95,23 @@
     <p>En este archivo colocamos los nombres y directorios que queremos excluir</p>
     <p>por ejemplo el archivo .env, donde tenemos las variables de conexion a Mysql</p>
 
-    <h3>Comando Status de la forma corta</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="status">Comando Status de la forma corta</h2>
     <p>git status -s</p>
     <p>Nos muestra los nombres de los archivos comprometidos en el versionamiento</p>
 
-    <h3>ver modificaiones realizadas a un arhivo con el Comando diff</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="diff">ver modificaiones realizadas a un arhivo con el Comando diff</h2>
     <p>git diff</p>
     <p>nos muestra de manera visual las lineas borradas y las linea insertada en un arhivo modificado</p>
     <p>ahora si los cambios ya fueron agregrados al area Stage hay que utilizar</p>
     <p>git diff --staged</p>
 
-    <h3>Manejo de Ramas </h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="ramas">Manejo de Ramas </h2>
     <h2>ver cual es la rama actual</h2>
     <p>git branch</p>
     <h2>Creacion de una rama</h2>
@@ -82,7 +124,9 @@
     <p>git checkout master</p>
     <p>git merge beta</p>
 
-    <h3>Subir el codigo local a la nuve</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="subir-local-nuve">Subir el codigo local a la nuve</h2>
     <p>Hay que tener una cuenta en Gihub</p>
     <h2>para subir el trabajo local a la nueve hay que utilizar el comando Remote</h2>
     <p>git remote add origin https://github.com/rodzapata/CursoGit.git</p>
@@ -92,7 +136,25 @@
     <p>el parametro -u es para que cree una rama nueva en este caso master en el servidor remoto</p>
     <p>en el caso que la rama exista se debe omitir</p>
 
-    <h3>clonar el repositorio para trabajar y actualizara los datos</h3>
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="token-git">token Git</h2>
+    <article>
+      Como cada cierto tiempo hay que generar un token hay que ralizar los siguientes pasos: <br>
+      dentro del menu que aparece en la parte superior derecha aparece un mundo con una cruz, <br>
+      escogemos <b>settings</b> y esogemos la ultima opcion <b>Developer settings</b>, <br>
+      por ultimo escogemos <b>Personal access Token</b>, le damos al boton <b>Create new token</b><br>
+      debemos escribir una <b>note</b> un nombre por ejemplo Compaq28082022 para identificar, <br>
+      la maquina de donde se esta actualizando y la fecha de la actualizacion, ahora en <b>Select scope</b>  <br>
+      hay que chulear la opcion <b>repo</b> (full control of private repositories), <br>
+      ojo que si no se chulea esta opcion no funciona el token, por utlimo le datos click al boton, <br>
+      <b>Generate Token</b>
+  
+    </article>
+
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="clonar-repositorio">clonar el repositorio para trabajar y actualizara los datos</h2>
     <p>para clonar el respositorio del remoto a nuestra maquina local se usa el comando Clone</p>
     <p>git clone https://github.com/rodzapata/CursoGit.git</p>
     <p>se recomienda que una vez descargados los cambios, se ejecute el comando Pull</p>
@@ -100,12 +162,12 @@
     <p>realizamos los cambios a trabajar hacemos los Commit y finalamente actualizamos al remoto usando Push</p>
     <p>git push origin master</p>
 
-    <h3>Como saber si nuestro repsitorio local esta conectado a uno remoto</h3>
+    <h2 id="comprobar-remoto">Como saber si nuestro repositorio local esta conectado a uno remoto</h2>
     <p>git remote -v</p>
 
     
+    <h2 id="modificar-descripcion-commit">Como modificar la descripcion de un Commit</h2>
     <h3>Prueba de una nueva leyenda</h3>
-    <h3>Como modificar la descripcion de un Commit</h3>
     <p>Para modificar la descripcion del commit, se escribe el comando <b>git commit --amend</b></p>
     <p>Este comando funciona, si el commit es local, osea que nos hecho un <b>push</b>, en caso de haberlo hecho</p>
     <p>hay que forsar la actualizacion al contenedor remoto con el comando <b>git push --force</b></p>
