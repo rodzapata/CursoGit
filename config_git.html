@@ -20,6 +20,7 @@
       <li><a href="#status">Status</a></li>
       <li><a href="#diff">ver modificaiones realizadas a un arhivo con el Comando diff</a></li>
       <li><a href="#ramas">Manejo de Ramas </a></li>
+      <li><a href="#logramas">Manejo de Ramas </a></li>
       <li><a href="#subir-local-nuve">Subir de local a la nuve</a></li>
       <li><a href="#token-git">Token Git</a></li>
       <li><a href="#clonar-repositorio">Clonar Repositorio</a></li>
@@ -136,14 +137,62 @@
     <h2>ver cual es la rama actual</h2>
     <p>git branch</p>
     <h2>Creacion de una rama</h2>
+    <article>
+      Existen 2 forma de crear ramas: la primera forma hay que entrar primero a la rama a la que se le quiere hacer la copia. por ejemplo: <br>
+      git branch beta <br><br>
+      Por convencion los nombre de la ramas deben escribirse en minusculas. 
+
+      y la segunda forma no es necesario estar dentro de la rama a la que se le quiere hacer copia, 
+      sino que se puede hacer la copia estando ubicado en la rama <strong>master</strong>. por ejemplo: <br>
+      git checkout -b beta <br>
+      crea la rama y se posesiona en la rama beta, en un solo comando
+
+    </article>
     <p>git checkout -b Beta</p>
     <h2>Cambiar de rama</h2>
     <p>git checkout master</p>
+
+    <h2>cambiar el nombre a una rama</h2>
+    <article>
+      Existen 2 formas de cambiar el nombre de una rama, en la primera hay que estar dentro de la rama a la que se le quiere cambiar el nombre.
+      por ejemplo: <br>
+      estando en la rama master queremos cambiarle el nombre a la rama beta, entonces primero entramoa a la rama master. <br>
+      git cheackout beta <br>
+      y le cambiamo el nombre a beta2. <br>
+      git branch -m beta2 <br>
+      donde el parametro -m significa <strong>modificar</strong>. <br>
+
+      La segunda forma se puede cambiar el nombre sin necidad de estar dentro de la rama a la que se le quiere modificar el nombre, <br>
+      por ejemplo desde la carpeta master, podemos cambiar el nombre de la rama de beta2 a beta3. <br>
+      se utiliza el mismo comando pero hay que especificarle el nombre de la rama y el nuevo nombre que se le va a colocar a la rama. <br>
+      git branch -m beta2 beta3 <br>
+
+    </article>
+
+    <h2>Eliminar rama</h2>
+    <article>
+      git branch -d beta3 <br>
+      donde el parametro -d significa delete.
+    </article>
+
     <h2>Unir ramas</h2>
-    <p>Para actualizar la rama principal con los cambios realizado en la rama Beta</p>
-    <p>hay que posecionarse primero en la rama Master</p>
+    <p>primero vamoa a modificar algo en la version beta</p>
+    <p>Para actualizar la rama principal con los cambios realizado en la rama beta</p>
+    <p>hay que posecionarse primero en la rama que va a recibir los cambios, en este caso seria master</p>
     <p>git checkout master</p>
     <p>git merge beta</p>
+
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="logramas">Log de Ramas </h2>
+    <article>
+      Es posible ver un log de los cambios realizados en una rama. <br>
+      git log <br>
+      Tambien podemos especificar que nos muestra la informacion condensada en una linea para poder apreciarlo mejor. <br>
+      git log --oneline <br>
+
+    </article>
+
 
     <a href="config_git.html">⏫</a>
     <hr>
