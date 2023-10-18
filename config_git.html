@@ -20,12 +20,13 @@
       <li><a href="#status">Status</a></li>
       <li><a href="#diff">ver modificaiones realizadas a un arhivo con el Comando diff</a></li>
       <li><a href="#ramas">Manejo de Ramas </a></li>
-      <li><a href="#logramas">Manejo de Ramas </a></li>
+      <li><a href="#logramas">log de Ramas </a></li>
       <li><a href="#subir-local-nuve">Subir de local a la nuve</a></li>
       <li><a href="#token-git">Token Git</a></li>
       <li><a href="#clonar-repositorio">Clonar Repositorio</a></li>
       <li><a href="#comprobar-remoto">Comprobar conexion local con remoto</a></li>
       <li><a href="#modificar-descripcion-commit">Modificar la descripcion de un Commit</a></li>
+      <li><a href="#issues">issues Tareas pendientes</a></li>
 
 
 
@@ -182,6 +183,11 @@
     <p>git checkout master</p>
     <p>git merge beta</p>
 
+    <h2>conflicto al unir o fusionar ramas</h2>
+    <p>Es posible abortar una union con el comando </p>
+    <p>git merge --abort</p>
+
+
     <a href="config_git.html">⏫</a>
     <hr>
     <h2 id="logramas">Log de Ramas </h2>
@@ -230,8 +236,13 @@
     <p>git clone https://github.com/rodzapata/CursoGit.git</p>
     <p>se recomienda que una vez descargados los cambios, se ejecute el comando Pull</p>
     <p>git pull</p>
+    <p>se recomienda especificar la rama por ejemplo :</p>
+    <p>git pull origin master</p>
     <p>realizamos los cambios a trabajar hacemos los Commit y finalamente actualizamos al remoto usando Push</p>
-    <p>git push origin master</p>
+    <p>git push origin master</p><br>
+    <p>Tambien se puede especificar el nombre de la rama que se quiere clonar, por ejemplo: </p>
+    <p>git clone -b master https://github.com/rodzapata/CursoGit.git</p>
+
 
     <h2 id="comprobar-remoto">Como saber si nuestro repositorio local esta conectado a uno remoto</h2>
     <p>git remote -v</p>
@@ -244,6 +255,10 @@
     <p>Este comando funciona, si el commit es local, osea que nos hecho un <b>push</b>, en caso de haberlo hecho</p>
     <p>hay que forsar la actualizacion al contenedor remoto con el comando <b>git push --force</b></p>
 
+    <a href="config_git.html">⏫</a>
+    <hr>
+    <h2 id="issues">Issues Tareas pendientes</h2>
+    <p>Es utilizado para reporar errores encontradod y solicitar nuevas funcionalidades.</p>
 
 </body>
 </html>
