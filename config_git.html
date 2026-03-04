@@ -1,442 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curso de Git</title>
-    <link rel="stylesheet" href="estilo-git.css" />
-  </head>
-  <body>
-    <h1>Curso de Git</h1>
-    <h2>Indice de contenido</h2>
-    <ui>
-      <li><a href="#config-inicial">Configuracion Inicial</a></li>
-      <li><a href="#transacciones">Comando transacciones </a></li>
-      <li><a href="#staged">Staged </a></li>
-      <li><a href="#cancelar-modificaciones">cancelar modificaciones</a></li>
-      <li>
-        <a href="#cancelar-modificaciones-anterior"
-          >Cancelar modificaciones metodo anterior</a
-        >
-      </li>
-      <li>
-        <a href="#cancelar-ultimo-commit"
-          >cancelar el ultimo Commit realizado</a
-        >
-      </li>
-      <li>
-        <a href="#excluir-archivos"
-          >Excluir archivos que no queremos que se le haga versionamiento</a
-        >
-      </li>
-      <li><a href="#status">Status</a></li>
-      <li>
-        <a href="#diff"
-          >ver modificaiones realizadas a un arhivo con el Comando diff</a
-        >
-      </li>
-      <li><a href="#ramas">Manejo de Ramas </a></li>
-      <li><a href="#logramas">log de Ramas </a></li>
-      <li><a href="#subir-local-nuve">Subir de local a la nuve</a></li>
-      <li><a href="#token-git">Token Git</a></li>
-      <li><a href="#clonar-repositorio">Clonar Repositorio</a></li>
-      <li>
-        <a href="#comprobar-remoto">Comprobar conexion local con remoto</a>
-      </li>
-      <li>
-        <a href="#modificar-descripcion-commit"
-          >Modificar la descripcion de un Commit</a
-        >
-      </li>
-      <li><a href="#issues">issues Tareas pendientes</a></li>
-      <li><a href="#grep">grep</a></li>
-    </ui>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de Git</title>
+  <link rel="stylesheet" href="estilo-git.css" />
+</head>
+
+<body>
+  <h1>Curso de Git</h1>
+  <h2>Indice de contenido</h2>
+  <ui>
+    <li><a href="#referencias">referencias</a></li>
+    <li><a href="#config-inicial">Configuracion Inicial</a></li>
+    <li><a href="#transacciones">Comando transacciones </a></li>
+    <li><a href="#staged">Staged </a></li>
+    <li><a href="#cancelar-modificaciones">cancelar modificaciones</a></li>
+    <li>
+      <a href="#cancelar-modificaciones-anterior">Cancelar modificaciones metodo anterior</a>
+    </li>
+    <li><a href="#cancelar-ultimo-commit">cancelar el ultimo Commit realizado</a></li>
+    <li><a href="#commit-message">convenciones en los mensajes de commit</a></li>
+    <li>
+      <a href="#excluir-archivos">Excluir archivos que no queremos que se le haga versionamiento</a>
+    </li>
+    <li><a href="#status">Status</a></li>
+    <li>
+      <a href="#diff">ver modificaiones realizadas a un arhivo con el Comando diff</a>
+    </li>
+    <li><a href="#ramas">Manejo de Ramas </a></li>
+    <li><a href="#logramas">log de Ramas </a></li>
+    <li><a href="#subir-local-nuve">Subir de local a la nuve</a></li>
+    <li><a href="#token-git">Token Git</a></li>
+    <li><a href="#clonar-repositorio">Clonar Repositorio</a></li>
+    <li>
+      <a href="#comprobar-remoto">Comprobar conexion local con remoto</a>
+    </li>
+    <li>
+      <a href="#modificar-descripcion-commit">Modificar la descripcion de un Commit</a>
+    </li>
+    <li><a href="#issues">issues Tareas pendientes</a></li>
+    <li><a href="#grep">grep</a></li>
+  </ui>
 
     <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="config-inicial">Configuracion inicial de Git</h2>
-    <p>git config --global user.name "Rodney Zapata"</p>
-    <p>git config --global user.email "rodneyzapatapalacio@gmail.com"</p>
-    <p>git config --global core.editor "code --wait"</p>
-    <p>git config --global -e</p>
-    <p>Configuracion del Enter en Windows</p>
-    <p>git config --global core.autocrlf true</p>
-    <p>Configuracion del Enter en Linux y Mac</p>
-    <p>git config --global core.autocrlf input</p><br>
-    <p>Para ver todas las configuraciones globales que tenemos ejecutamos:</p>
-    <p>git config --global --list</p>
-    <p>
-      En las versiones anteriores la carpeta por defecto del repositorio se
-      llamaba <strong>Master</strong>
-    </p>
-    <p>A parir de las versiones nuevas se llama <strong>main</strong></p>
-    <p>
-      si trabajamos con una version vieja y queremos que por defecto tenga el
-      nuevo nombre debemos escribir
-    </p>
-    <p>git config --global init.defaultbranch main</p>
-    <p>
-      en caso que ya veniamos trabajando con la carpeta <strong>master</strong>
-    </p>
-    <p>
-      podemos renombrarla de <strong>master</strong> a <strong>main</strong>
-    </p>
-    <p>con el siguiente comando:</p>
-    <p>git branch -m main</p>
+  <hr />
+  <h2 id="referencias">referencias</h2>
+  <article>
+     pagina oficial de git: <a href="http://" target="_blank" rel="noopener noreferrer">git pagina oficial</a> <br>
+     paginas de convenciones para los commit: <a href="https://www.conventionalcommits.org/en/v1.0.0/">convencional commit</a>
+  </article>
 
-    <p>
-      repositorio de prueba: https://github.com/rodzapata/CursoPronunciation.git
-    </p>
-    <h2>Inicializar el proyecto con Init</h2>
-    <p>Esto solo se hace cuando se va a crear el proyecto desde Cero</p>
-    <p>git init</p>
-    <br />
-    <p>
-      podemos especificar la rama que vamos a clonar, por ejemplo como el
-      repositorio
-    </p>
-    <p>
-      por defecto es ahora <strong>main</strong>, pero yo venia trabajando con
-      la version <strong>master</strong>, entonces tengo que especificar la rama
-      con el paramatro -b
-    </p>
-    <p>de <strong>breanch</strong> que significa rama</p>
-    <p>como se muestra a continuacion:</p>
-    <p>git init -b master</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="config-inicial">Configuracion inicial de Git</h2>
+  <p>git config --global user.name "Rodney Zapata"</p>
+  <p>git config --global user.email "rodneyzapatapalacio@gmail.com"</p>
+  <p>git config --global core.editor "code --wait"</p>
+  <p>git config --global -e</p>
+  <p>Configuracion del Enter en Windows</p>
+  <p>git config --global core.autocrlf true</p>
+  <p>Configuracion del Enter en Linux y Mac</p>
+  <p>git config --global core.autocrlf input</p><br>
+  <p>Para ver todas las configuraciones globales que tenemos ejecutamos:</p>
+  <p>git config --global --list</p>
+  <p>
+    En las versiones anteriores la carpeta por defecto del repositorio se
+    llamaba <strong>Master</strong>
+  </p>
+  <p>A parir de las versiones nuevas se llama <strong>main</strong></p>
+  <p>
+    si trabajamos con una version vieja y queremos que por defecto tenga el
+    nuevo nombre debemos escribir
+  </p>
+  <p>git config --global init.defaultbranch main</p>
+  <p>
+    en caso que ya veniamos trabajando con la carpeta <strong>master</strong>
+  </p>
+  <p>
+    podemos renombrarla de <strong>master</strong> a <strong>main</strong>
+  </p>
+  <p>con el siguiente comando:</p>
+  <p>git branch -m main</p>
 
-    <h2>Eliminar un repositorio Git creado por error con git init</h2>
-    <p>
-      para eliminar la carpeta de .git, que se creo en la carpeta errada,
-      entonces escribimos
-    </p>
-    <p>rm -rf .git</p>
-    <p>
-      donde <strong>rm</strong>, es el comando para eliminar archivo,
-      <strong>r</strong>, para que elimine de manera recursiva, osea incluyendo
-      subdirectorio,
-    </p>
-    <p>
-      y la <strong>f</strong>, para que force la eliminacion y no actualice la
-      verificacion
-    </p>
+  <p>
+    repositorio de prueba: https://github.com/rodzapata/CursoPronunciation.git
+  </p>
+  <h2>Inicializar el proyecto con Init</h2>
+  <p>Esto solo se hace cuando se va a crear el proyecto desde Cero</p>
+  <p>git init</p>
+  <br />
+  <p>
+    podemos especificar la rama que vamos a clonar, por ejemplo como el
+    repositorio
+  </p>
+  <p>
+    por defecto es ahora <strong>main</strong>, pero yo venia trabajando con
+    la version <strong>master</strong>, entonces tengo que especificar la rama
+    con el paramatro -b
+  </p>
+  <p>de <strong>breanch</strong> que significa rama</p>
+  <p>como se muestra a continuacion:</p>
+  <p>git init -b master</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="staged">Area Stage</h2>
-    <p>Agregamos un archivo al area de Stage (Escenario)</p>
-    <p>git add .</p>
-    <p>Ahora antes de hacer un commit queremos que regrese a loca</p>
-    <p>git reset</p>
+  <h2>Eliminar un repositorio Git creado por error con git init</h2>
+  <p>
+    para eliminar la carpeta de .git, que se creo en la carpeta errada,
+    entonces escribimos
+  </p>
+  <p>rm -rf .git</p>
+  <p>
+    donde <strong>rm</strong>, es el comando para eliminar archivo,
+    <strong>r</strong>, para que elimine de manera recursiva, osea incluyendo
+    subdirectorio,
+  </p>
+  <p>
+    y la <strong>f</strong>, para que force la eliminacion y no actualice la
+    verificacion
+  </p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="transacciones">Comandos de transacciones</h2>
-    <p>Agregamos un archivo al area de Stage (Escenario)</p>
-    <p>git add index.html</p>
-    <p>Verificamos el estado del repositorio Status</p>
-    <p>git status</p>
-    <p>Confirmamos los cambios realizado con Commit</p>
-    <p>git commit -m "Plantilla inicial"</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="staged">Area Stage</h2>
+  <p>Agregamos un archivo al area de Stage (Escenario)</p>
+  <p>git add .</p>
+  <p>Ahora antes de hacer un commit queremos que regrese a loca</p>
+  <p>git reset</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="cancelar-modificaciones">
-      cancelar modificaciones ---nuevo metodo
-    </h2>
-    <p>git restore index.html</p>
-    <h2>
-      Descartar una modificacion que aun no haya utilizado Git add sin Commit
-    </h2>
-    <p>git restore --staged index.html</p>
-    <p>git status</p>
-    <p>git restore index.html</p>
-    <p>si queremos restauras todos los archivos colocamos un punto (.) y enviarlo a staged se usa:</p>
-    <p>git restore --staged . </p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="transacciones">Comandos de transacciones</h2>
+  <p>Agregamos un archivo al area de Stage (Escenario)</p>
+  <p>git add index.html</p>
+  <p>Verificamos el estado del repositorio Status</p>
+  <p>git status</p>
+  <p>Confirmamos los cambios realizado con Commit</p>
+  <p>git commit -m "Plantilla inicial"</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="cancelar-modificaciones-anterior">
-      cancelar modificaciones ---metodo anterior por compatibilidad
-    </h2>
-    <p>git checkout --index.html</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="cancelar-modificaciones">
+    cancelar modificaciones ---nuevo metodo
+  </h2>
+  <p>git restore index.html</p>
+  <h2>
+    Descartar una modificacion que aun no haya utilizado Git add sin Commit
+  </h2>
+  <p>git restore --staged index.html</p>
+  <p>git status</p>
+  <p>git restore index.html</p>
+  <p>si queremos restauras todos los archivos colocamos un punto (.) y enviarlo a staged se usa:</p>
+  <p>git restore --staged . </p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="cancelar-ultimo-commit">Cancelar el ultimo Commit realizado</h2>
-    <p>git reset HEAD index.html</p>
-    <h3>Log para ver los commit realizados para eliminar el commit</h3>
-    <p>git log --oneline</p>
-    <h3>Resetear un Commit realizado</h3>
-    <p>git reset 6048f11</p>
-    <p>git checkout --index.html</p>
-    <p>
-      El comando Reset no es recomendado porque es destructivo es mejor utilizar
-      Revert
-    </p>
-    <h2>Diferencia entres Reset, Revert y Rebase</h2>
-    <a href="https://geekflare.com/es/git-reset-vs-revert-vs-rebase/">
-      Este articulo es tomado de la pagina:</a
-    >
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="cancelar-modificaciones-anterior">
+    cancelar modificaciones ---metodo anterior por compatibilidad
+  </h2>
+  <p>git checkout --index.html</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="excluir-archivos">
-      Excluir archivos que no queremos que se le haga versionamiento
-    </h2>
-    <p>
-      Hay archivo que no queremos que se se les haga copia como por ejemplo los
-      ejecutables
-    </p>
-    <p>
-      variables de entorno que son diferente en cada máquina, como credenciales
-      de las bases de datos,
-    </p>
-    <p>que no queremos que suban en la copia por seguridad</p>
-    <h2>creacion del archivo .gitignore</h2>
-    <p>
-      En este archivo colocamos los nombres y directorios que queremos excluir
-    </p>
-    <p>
-      por ejemplo el archivo .env, donde tenemos las variables de conexion a
-      Mysql
-    </p>
-    <article>
-      para crear este archivo desde consola usamos el comando
-      <strong>touch</strong> ejemplo: <br />
-      <strong>touch</strong> gitignore <br /><br />
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="cancelar-ultimo-commit">Cancelar el ultimo Commit realizado</h2>
+  <p>git reset HEAD index.html</p>
+  <h3>Log para ver los commit realizados para eliminar el commit</h3>
+  <p>git log --oneline</p>
+  <h3>Resetear un Commit realizado</h3>
+  <p>git reset 6048f11</p>
+  <p>git checkout --index.html</p>
+  <p>
+    El comando Reset no es recomendado porque es destructivo es mejor utilizar
+    Revert
+  </p>
+  <h2>Diferencia entres Reset, Revert y Rebase</h2>
+  <a href="https://geekflare.com/es/git-reset-vs-revert-vs-rebase/">
+    Este articulo es tomado de la pagina:</a>
 
-      para editar el archivo usamos usamos el comando <strong>nome</strong>,
-      ejemplo : <br />
-      <strong>none</strong> gitignore <br /><br />
-      si esta en window usamos <strong>notepad</strong> gitignore <br /><br />
-    </article>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="excluir-archivos">
+    Excluir archivos que no queremos que se le haga versionamiento
+  </h2>
+  <p>
+    Hay archivo que no queremos que se se les haga copia como por ejemplo los
+    ejecutables
+  </p>
+  <p>
+    variables de entorno que son diferente en cada máquina, como credenciales
+    de las bases de datos,
+  </p>
+  <p>que no queremos que suban en la copia por seguridad</p>
+  <h2>creacion del archivo .gitignore</h2>
+  <p>
+    En este archivo colocamos los nombres y directorios que queremos excluir
+  </p>
+  <p>
+    por ejemplo el archivo .env, donde tenemos las variables de conexion a
+    Mysql
+  </p>
+  <article>
+    para crear este archivo desde consola usamos el comando
+    <strong>touch</strong> ejemplo: <br />
+    <strong>touch</strong> gitignore <br /><br />
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="status">Comando Status de la forma corta</h2>
-    <p>git status -s</p>
-    <p>
-      Nos muestra los nombres de los archivos comprometidos en el versionamiento
-    </p>
+    para editar el archivo usamos usamos el comando <strong>nome</strong>,
+    ejemplo : <br />
+    <strong>none</strong> gitignore <br /><br />
+    si esta en window usamos <strong>notepad</strong> gitignore <br /><br />
+  </article>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="diff">
-      ver modificaiones realizadas a un arhivo con el Comando diff
-    </h2>
-    <p>git diff</p>
-    <p>
-      nos muestra de manera visual las lineas borradas y las linea insertada en
-      un arhivo modificado
-    </p>
-    <p>
-      ahora si los cambios ya fueron agregrados al area Stage hay que utilizar
-    </p>
-    <p>git diff --staged</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="status">Comando Status de la forma corta</h2>
+  <p>git status -s</p>
+  <p>
+    Nos muestra los nombres de los archivos comprometidos en el versionamiento
+  </p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="ramas">Manejo de Ramas</h2>
-    <h2>ver cual es la rama actual</h2>
-    <p>git branch</p>
-    <h2>Creacion de una rama</h2>
-    <article>
-      Existen 2 forma de crear ramas: la primera forma hay que entrar primero a
-      la rama a la que se le quiere hacer la copia. por ejemplo: <br />
-      git branch beta <br /><br />
-      Por convencion los nombre de la ramas deben escribirse en minusculas. y la
-      segunda forma no es necesario estar dentro de la rama a la que se le
-      quiere hacer copia, sino que se puede hacer la copia estando ubicado en la
-      rama <strong>master</strong>. por ejemplo: <br />
-      git checkout -b beta <br />
-      crea la rama y se posesiona en la rama beta, en un solo comando
-    </article>
-    <p>git checkout -b Beta</p>
-    <h2>Cambiar de rama</h2>
-    <p>git checkout master</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="diff">
+    ver modificaiones realizadas a un arhivo con el Comando diff
+  </h2>
+  <p>git diff</p>
+  <p>
+    nos muestra de manera visual las lineas borradas y las linea insertada en
+    un arhivo modificado
+  </p>
+  <p>
+    ahora si los cambios ya fueron agregrados al area Stage hay que utilizar
+  </p>
+  <p>git diff --staged</p>
 
-    <h2>cambiar el nombre a una rama</h2>
-    <article>
-      Existen 2 formas de cambiar el nombre de una rama, en la primera hay que
-      estar dentro de la rama a la que se le quiere cambiar el nombre. por
-      ejemplo: <br />
-      estando en la rama master queremos cambiarle el nombre a la rama beta,
-      entonces primero entramoa a la rama master. <br />
-      git cheackout beta <br />
-      y le cambiamo el nombre a beta2. <br />
-      git branch -m beta2 <br />
-      donde el parametro -m significa <strong>modificar</strong>. <br />
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="ramas">Manejo de Ramas</h2>
+  <h2>ver cual es la rama actual</h2>
+  <p>git branch</p>
+  <h2>Creacion de una rama</h2>
+  <article>
+    Existen 2 forma de crear ramas: la primera forma hay que entrar primero a
+    la rama a la que se le quiere hacer la copia. por ejemplo: <br />
+    git branch beta <br /><br />
+    Por convencion los nombre de la ramas deben escribirse en minusculas. y la
+    segunda forma no es necesario estar dentro de la rama a la que se le
+    quiere hacer copia, sino que se puede hacer la copia estando ubicado en la
+    rama <strong>master</strong>. por ejemplo: <br />
+    git checkout -b beta <br />
+    crea la rama y se posesiona en la rama beta, en un solo comando
+  </article>
+  <p>git checkout -b Beta</p>
+  <h2>Cambiar de rama</h2>
+  <p>git checkout master</p>
 
-      La segunda forma se puede cambiar el nombre sin necidad de estar dentro de
-      la rama a la que se le quiere modificar el nombre, <br />
-      por ejemplo desde la carpeta master, podemos cambiar el nombre de la rama
-      de beta2 a beta3. <br />
-      se utiliza el mismo comando pero hay que especificarle el nombre de la
-      rama y el nuevo nombre que se le va a colocar a la rama. <br />
-      git branch -m beta2 beta3 <br />
-    </article>
+  <h2>cambiar el nombre a una rama</h2>
+  <article>
+    Existen 2 formas de cambiar el nombre de una rama, en la primera hay que
+    estar dentro de la rama a la que se le quiere cambiar el nombre. por
+    ejemplo: <br />
+    estando en la rama master queremos cambiarle el nombre a la rama beta,
+    entonces primero entramoa a la rama master. <br />
+    git cheackout beta <br />
+    y le cambiamo el nombre a beta2. <br />
+    git branch -m beta2 <br />
+    donde el parametro -m significa <strong>modificar</strong>. <br />
 
-    <h2>Eliminar rama</h2>
-    <article>
-      git branch -d beta3 <br />
-      donde el parametro -d significa delete.
-    </article>
+    La segunda forma se puede cambiar el nombre sin necidad de estar dentro de
+    la rama a la que se le quiere modificar el nombre, <br />
+    por ejemplo desde la carpeta master, podemos cambiar el nombre de la rama
+    de beta2 a beta3. <br />
+    se utiliza el mismo comando pero hay que especificarle el nombre de la
+    rama y el nuevo nombre que se le va a colocar a la rama. <br />
+    git branch -m beta2 beta3 <br />
+  </article>
 
-    <h2>Unir ramas</h2>
-    <p>primero vamoa a modificar algo en la version beta</p>
-    <p>
-      Para actualizar la rama principal con los cambios realizado en la rama
-      beta
-    </p>
-    <p>
-      hay que posesionarse primero en la rama que va a recibir los cambios, en
-      este caso seria master
-    </p>
-    <p>git checkout master</p>
-    <p>git merge beta</p>
+  <h2>Eliminar rama</h2>
+  <article>
+    git branch -d beta3 <br />
+    donde el parametro -d significa delete.
+  </article>
 
-    <h2>conflicto al unir o fusionar ramas</h2>
-    <p>Es posible abortar una union con el comando</p>
-    <p>git merge --abort</p>
+  <h2>Unir ramas</h2>
+  <p>primero vamoa a modificar algo en la version beta</p>
+  <p>
+    Para actualizar la rama principal con los cambios realizado en la rama
+    beta
+  </p>
+  <p>
+    hay que posesionarse primero en la rama que va a recibir los cambios, en
+    este caso seria master
+  </p>
+  <p>git checkout master</p>
+  <p>git merge beta</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="logramas">Log de Ramas</h2>
-    <article>
-      Es posible ver un log de los cambios realizados en una rama. <br />
-      git log <br />
-      Tambien podemos especificar que nos muestra la informacion condensada en
-      una linea para poder apreciarlo mejor. <br />
-      git log --oneline <br />
-      Tambien podemos especificar que nos muestre la informacion pero separada
-      por paginas donde podemos escoger el hast. <br />
-      debemos colocar el simbolo | que se encuentra en la linea superior del
-      teclado donde aparecen los numero. <br />
-      quedando de la siguiente forma: <br />
-      git log --oneline | cat <br />
-    </article>
+  <h2>conflicto al unir o fusionar ramas</h2>
+  <p>Es posible abortar una union con el comando</p>
+  <p>git merge --abort</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="subir-local-nuve">Subir el codigo local a la nuve</h2>
-    <p>Hay que tener una cuenta en Gihub</p>
-    <h2>
-      para subir el trabajo local a la nueve hay que utilizar el comando Remote
-    </h2>
-    <p>git remote add origin https://github.com/rodzapata/CursoGit.git</p>
-    <h2>Cargamos los datos con el comando Push</h2>
-    <p>git push -u origin master</p>
-    <p>pedira la cuenta de usuario y el token</p>
-    <p>
-      el parametro -u es para que cree una rama nueva en este caso master en el
-      servidor remoto
-    </p>
-    <p>en el caso que la rama exista se debe omitir</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="logramas">Log de Ramas</h2>
+  <article>
+    Es posible ver un log de los cambios realizados en una rama. <br />
+    git log <br />
+    Tambien podemos especificar que nos muestra la informacion condensada en
+    una linea para poder apreciarlo mejor. <br />
+    git log --oneline <br />
+    Tambien podemos especificar que nos muestre la informacion pero separada
+    por paginas donde podemos escoger el hast. <br />
+    debemos colocar el simbolo | que se encuentra en la linea superior del
+    teclado donde aparecen los numero. <br />
+    quedando de la siguiente forma: <br />
+    git log --oneline | cat <br />
+  </article>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="token-git">token Git</h2>
-    <article>
-      Como cada cierto tiempo hay que generar un token hay que ralizar los
-      siguientes pasos: <br />
-      dentro del menu que aparece en la parte superior derecha aparece un mundo
-      con una cruz, <br />
-      escogemos <b>settings</b> y esogemos la ultima opcion
-      <b>Developer settings</b>, <br />
-      por ultimo escogemos <b>Personal access Token</b>, le damos al boton
-      <b>Create new token</b><br />
-      debemos escribir una <b>note</b> un nombre por ejemplo Compaq28082022 para
-      identificar, <br />
-      la maquina de donde se esta actualizando y la fecha de la actualizacion,
-      ahora en <b>Select scope</b> <br />
-      hay que chulear la opcion <b>repo</b> (full control of private
-      repositories), <br />
-      ojo que si no se chulea esta opcion no funciona el token, por utlimo le
-      datos click al boton, <br />
-      <b>Generate Token</b>
-    </article>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="subir-local-nuve">Subir el codigo local a la nuve</h2>
+  <p>Hay que tener una cuenta en Gihub</p>
+  <h2>
+    para subir el trabajo local a la nueve hay que utilizar el comando Remote
+  </h2>
+  <p>git remote add origin https://github.com/rodzapata/CursoGit.git</p>
+  <h2>Cargamos los datos con el comando Push</h2>
+  <p>git push -u origin master</p>
+  <p>pedira la cuenta de usuario y el token</p>
+  <p>
+    el parametro -u es para que cree una rama nueva en este caso master en el
+    servidor remoto
+  </p>
+  <p>en el caso que la rama exista se debe omitir</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="clonar-repositorio">
-      clonar el repositorio para trabajar y actualizara los datos
-    </h2>
-    <p>
-      para clonar el respositorio del remoto a nuestra maquina local se usa el
-      comando Clone
-    </p>
-    <p>git clone https://github.com/rodzapata/CursoGit.git</p>
-    <p>
-      se recomienda que una vez descargados los cambios, se ejecute el comando
-      Pull
-    </p>
-    <p>git pull</p>
-    <p>se recomienda especificar la rama por ejemplo :</p>
-    <p>git pull origin master</p>
-    <p>
-      realizamos los cambios a trabajar hacemos los Commit y finalamente
-      actualizamos al remoto usando Push
-    </p>
-    <p>git push origin master</p>
-    <br />
-    <p>
-      Tambien se puede especificar el nombre de la rama que se quiere clonar,
-      por ejemplo:
-    </p>
-    <p>git clone -b master https://github.com/rodzapata/CursoGit.git</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="token-git">token Git</h2>
+  <article>
+    Como cada cierto tiempo hay que generar un token hay que ralizar los
+    siguientes pasos: <br />
+    dentro del menu que aparece en la parte superior derecha aparece un mundo
+    con una cruz, <br />
+    escogemos <b>settings</b> y esogemos la ultima opcion
+    <b>Developer settings</b>, <br />
+    por ultimo escogemos <b>Personal access Token</b>, le damos al boton
+    <b>Create new token</b><br />
+    debemos escribir una <b>note</b> un nombre por ejemplo Compaq28082022 para
+    identificar, <br />
+    la maquina de donde se esta actualizando y la fecha de la actualizacion,
+    ahora en <b>Select scope</b> <br />
+    hay que chulear la opcion <b>repo</b> (full control of private
+    repositories), <br />
+    ojo que si no se chulea esta opcion no funciona el token, por utlimo le
+    datos click al boton, <br />
+    <b>Generate Token</b>
+  </article>
 
-    <h2 id="comprobar-remoto">
-      Como saber si nuestro repositorio local esta conectado a uno remoto
-    </h2>
-    <p>git remote -v</p>
-    <p>
-      En caso de haber creado un remoto equivoca se puede borrar y crearlo
-      nuevamente, para borrarlo se unsa el comando
-    </p>
-    <p>git remote remove origin</p>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="clonar-repositorio">
+    clonar el repositorio para trabajar y actualizara los datos
+  </h2>
+  <p>
+    para clonar el respositorio del remoto a nuestra maquina local se usa el
+    comando Clone
+  </p>
+  <p>git clone https://github.com/rodzapata/CursoGit.git</p>
+  <p>
+    se recomienda que una vez descargados los cambios, se ejecute el comando
+    Pull
+  </p>
+  <p>git pull</p>
+  <p>se recomienda especificar la rama por ejemplo :</p>
+  <p>git pull origin master</p>
+  <p>
+    realizamos los cambios a trabajar hacemos los Commit y finalamente
+    actualizamos al remoto usando Push
+  </p>
+  <p>git push origin master</p>
+  <br />
+  <p>
+    Tambien se puede especificar el nombre de la rama que se quiere clonar,
+    por ejemplo:
+  </p>
+  <p>git clone -b master https://github.com/rodzapata/CursoGit.git</p>
 
-    <h2 id="modificar-descripcion-commit">
-      Como modificar la descripcion de un Commit
-    </h2>
-    <h3>Prueba de una nueva leyenda</h3>
-    <p>
-      Para modificar la descripcion del commit, se escribe el comando
-      <b>git commit --amend</b>
-    </p>
-    <p>
-      Este comando funciona, si el commit es local, osea que nos hecho un
-      <b>push</b>, en caso de haberlo hecho
-    </p>
-    <p>
-      hay que forsar la actualizacion al contenedor remoto con el comando
-      <b>git push --force</b>
-    </p>
+  <h2 id="comprobar-remoto">
+    Como saber si nuestro repositorio local esta conectado a uno remoto
+  </h2>
+  <p>git remote -v</p>
+  <p>
+    En caso de haber creado un remoto equivoca se puede borrar y crearlo
+    nuevamente, para borrarlo se unsa el comando
+  </p>
+  <p>git remote remove origin</p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="issues">Issues Tareas pendientes</h2>
-    <p>
-      Es utilizado para reporar errores encontradod y solicitar nuevas
-      funcionalidades.
-    </p>
+  <h2 id="modificar-descripcion-commit">
+    Como modificar la descripcion de un Commit
+  </h2>
+  <h3>Prueba de una nueva leyenda</h3>
+  <p>
+    Para modificar la descripcion del commit, se escribe el comando
+    <b>git commit --amend</b>
+  </p>
+  <p>
+    Este comando funciona, si el commit es local, osea que nos hecho un
+    <b>push</b>, en caso de haberlo hecho
+  </p>
+  <p>
+    hay que forsar la actualizacion al contenedor remoto con el comando
+    <b>git push --force</b>
+  </p>
 
-    <a href="config_git.html">⏫</a>
-    <hr />
-    <h2 id="grep">
-      grep muestra el contenido de una palabra dentro de los archivoss
-    </h2>
-    <p>git grep language</p>
-    <p>
-      Tambien se puede utilizar con la palabra <strong>grep</strong> y consulta
-      aunque no tenga seguimiento en el repositorio
-    </p>
-    si queremos que ecuentre la palabra sin iportar minisculas y mayusculas se usa el 
-    parametro <strong>- i</strong> ingnore mayusculas y minisculas
-    <pre>
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="issues">Issues Tareas pendientes</h2>
+  <p>
+    Es utilizado para reporar errores encontradod y solicitar nuevas
+    funcionalidades.
+  </p>
+
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="grep">
+    grep muestra el contenido de una palabra dentro de los archivoss
+  </h2>
+  <p>git grep language</p>
+  <p>
+    Tambien se puede utilizar con la palabra <strong>grep</strong> y consulta
+    aunque no tenga seguimiento en el repositorio
+  </p>
+  si queremos que ecuentre la palabra sin iportar minisculas y mayusculas se usa el
+  parametro <strong>- i</strong> ingnore mayusculas y minisculas
+  <pre>
       git grep -i whetting
     </pre>
-    si queremos que solo busque las palabras dentro de los datos confirmados se usa <strong>HEAD</strong>
-    
-  </body>
+  si queremos que solo busque las palabras dentro de los datos confirmados se usa <strong>HEAD</strong>
+
+  <a href="config_git.html">⏫</a>
+  <hr />
+  <h2 id="commit-message">Convecciones en los mensajes de commit </h2>
+  <article>
+    <pre>
+      <code>
+        codificacion
+        <tipo>(alcance opcional): descripción corta
+        
+        [explicación opcional más detallada]
+        
+        [footer opcional]
+
+        Ejemplo:
+
+        feat(auth): add JWT refresh token support
+        
+      </code>
+    </pre>
+    tips mas usados: <br>
+    <pre>
+      <code>
+        🎯 Tipos más usados
+        Tipo	    Uso
+        feat	    Nueva funcionalidad
+        fix	      Corrección de bug
+        docs	    Cambios en documentación
+        style	    Formato (sin cambio lógico)
+        refactor	Mejora interna sin cambiar comportamiento
+        test	    Agregar o modificar tests
+        chore	    Tareas técnicas (deps, config, build)
+        perf	    Mejora de rendimiento
+        ci	      Cambios en CI/CD
+        build	    Cambios en build system        
+
+      </code>
+    </pre>
+    ejemplos bien hecho: <br>
+    <pre>
+      <code>
+
+        📌 Ejemplos bien hechos
+        Nueva funcionalidad
+        feat(invoice): implement invoice PDF generation
+
+        Corrección de bug
+        fix(auth): prevent token expiration crash
+
+        Refactor
+        refactor(user-service): simplify role validation logic
+
+        Dependencias
+        chore(deps): upgrade NestJS to v11
+        
+      </code>
+    </pre>
+    mejores practicas <br>
+    <pre>
+      <code>
+        🔥 Mejores prácticas reales
+        1️⃣ Usa verbo en imperativo
+        
+        Correcto:
+        
+        add login validation
+        fix payment calculation
+        remove deprecated endpoint
+        
+        Incorrecto:
+        
+        added login validation
+        fixing payment calculation
+        
+      </code>
+    </pre>
+  </article>
+
+
+</body>
+
 </html>
